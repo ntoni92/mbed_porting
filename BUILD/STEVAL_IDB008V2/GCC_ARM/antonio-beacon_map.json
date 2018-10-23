@@ -1,0 +1,416 @@
+[
+    {
+        "module": "Bluetooth_LE\\Profile_Framework_Central\\profiles\\ble_profile\\master_events_CB.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 1268
+        }
+    }, 
+    {
+        "module": "[fill]", 
+        "size": {
+            ".data": 3, 
+            ".bss": 12, 
+            ".text": 64
+        }
+    }, 
+    {
+        "module": "[lib]/bluenrg1_stack.a", 
+        "size": {
+            ".data": 5, 
+            ".bss": 1564, 
+            ".text": 0
+        }
+    }, 
+    {
+        "module": "[lib]/c.a", 
+        "size": {
+            ".data": 2472, 
+            ".bss": 89, 
+            ".text": 29399
+        }
+    }, 
+    {
+        "module": "[lib]/gcc.a", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 8724
+        }
+    }, 
+    {
+        "module": "[lib]/master_library_bluenrg1.a", 
+        "size": {
+            ".data": 4, 
+            ".bss": 68, 
+            ".text": 4868
+        }
+    }, 
+    {
+        "module": "[lib]/misc", 
+        "size": {
+            ".data": 16, 
+            ".bss": 28, 
+            ".text": 244
+        }
+    }, 
+    {
+        "module": "[misc]", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 0
+        }
+    }, 
+    {
+        "module": "main.o", 
+        "size": {
+            ".data": 4, 
+            ".bss": 2272, 
+            ".text": 2028
+        }
+    }, 
+    {
+        "module": "mbed-os\\drivers\\BusIn.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 54
+        }
+    }, 
+    {
+        "module": "mbed-os\\drivers\\InterruptManager.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 224
+        }
+    }, 
+    {
+        "module": "mbed-os\\drivers\\SPI.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 12, 
+            ".text": 680
+        }
+    }, 
+    {
+        "module": "mbed-os\\drivers\\Serial.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 578
+        }
+    }, 
+    {
+        "module": "mbed-os\\drivers\\SerialBase.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 1033
+        }
+    }, 
+    {
+        "module": "mbed-os\\features\\filesystem\\File.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 118
+        }
+    }, 
+    {
+        "module": "mbed-os\\hal\\mbed_gpio.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 362
+        }
+    }, 
+    {
+        "module": "mbed-os\\hal\\mbed_sleep_manager.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 8
+        }
+    }, 
+    {
+        "module": "mbed-os\\hal\\mbed_ticker_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 1476
+        }
+    }, 
+    {
+        "module": "mbed-os\\hal\\mbed_us_ticker_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 64, 
+            ".text": 48
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\FileBase.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 12, 
+            ".text": 532
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\FileHandle.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 266
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\FilePath.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 356
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\Stream.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 1071
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_alloc_wrappers.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 138
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_assert.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 89
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_board.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 272
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_critical.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 5, 
+            ".text": 406
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_error.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 1, 
+            ".text": 56
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_retarget.o", 
+        "size": {
+            ".data": 4, 
+            ".bss": 272, 
+            ".text": 1907
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_sdk_boot.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 46
+        }
+    }, 
+    {
+        "module": "mbed-os\\platform\\mbed_wait_api_no_rtos.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 80
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_flash.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 176
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_gpio.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 652
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_it.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 34
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_mft.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 410
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_pka.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 410
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_spi.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 576
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_sysCtrl.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 60
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\BlueNRG1_uart.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 1048
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\Periph_Driver\\src\\misc.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 344
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\TARGET_BLUENRG2\\TARGET_STEVAL_IDB008V2\\device\\TOOLCHAIN_GCC_ARM\\startup_bluenrg2.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 246
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\TARGET_BLUENRG2\\pin_device.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 34
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\gpio_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 320
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\hal\\src\\clock.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 4, 
+            ".text": 20
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\hal\\src\\miscutil.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 124
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\hal\\src\\osal.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 90
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\hal\\src\\system_bluenrg1.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 576, 
+            ".text": 1405
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\mbed_overrides.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 4
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\serial_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 28, 
+            ".text": 520
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\spi_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 0, 
+            ".text": 838
+        }
+    }, 
+    {
+        "module": "mbed-os\\targets\\TARGET_STMBLUE\\us_ticker_api.o", 
+        "size": {
+            ".data": 0, 
+            ".bss": 5, 
+            ".text": 284
+        }
+    }, 
+    {
+        "summary": {
+            "static_ram": 7520, 
+            "total_flash": 66498
+        }
+    }
+]
