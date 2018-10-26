@@ -21,7 +21,7 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\mbed-os\targets\TARGET_STMBLUE\spi_api.o: \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/bluenrg_x_device.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis_nvic.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PeripheralNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PinNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/pin_device.h \

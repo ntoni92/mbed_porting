@@ -106,8 +106,8 @@
 
 **/
 
-#include "../../Periph_Driver/inc/BlueNRG1_flash.h"
-#include "../../Periph_Driver/inc/misc.h"
+#include "BlueNRG1_flash.h"
+#include "misc.h"
 #include "BlueNRG_x_device.h"
 #include "miscutil.h"
 #include "hal_types.h"

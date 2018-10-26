@@ -97,6 +97,6 @@
 #include "platform/FunctionPointer.h"
 
 using namespace mbed;
-using namespace std;
+//using namespace std;
 
 #endif

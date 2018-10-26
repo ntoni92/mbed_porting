@@ -1,7 +1,7 @@
 /* mbed Microcontroller Library
  * @Author: Antonio
  */
-#include "stddef.h"
+//#include "stddef.h"
 #include "us_ticker_api.h"
 #include "PeripheralNames.h"
 #include "hal_tick.h"
@@ -18,9 +18,10 @@ enum InitStatus{
 
 //uint32_t carry=0, b=0, c=0;
 uint32_t tick_count = 0;
+uint8_t ciao;
 
-void MFT1B_IRQHandler(void){
-    if ( MFT_StatusIT(MFT2,MFT_IT_TND) != RESET ){
+void MFT2B_IRQHandler(void){
+    if ( MFT_StatusIT(MFT2, MFT_IT_TND) != RESET ){
     	tick_count += 0x10000;
         // Clear MFT2 pending interrupt A
         MFT_ClearIT(MFT2, MFT_IT_TND);

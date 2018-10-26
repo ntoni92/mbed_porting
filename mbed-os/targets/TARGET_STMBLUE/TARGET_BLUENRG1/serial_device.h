@@ -9,8 +9,8 @@
 #define MBED_OS_TARGETS_TARGET_STMBLUE_TARGET_BLUENRG1_SERIAL_DEVICE_H_
 
 
-#include "../Periph_Driver/inc/BlueNRG1_sysCtrl.h"
-#include "../Periph_Driver/inc/BlueNRG1_uart.h"
+#include "BlueNRG1_sysCtrl.h"
+#include "BlueNRG1_uart.h"
 
 #define DEFAULT_BAUD 115200;
 

@@ -1,4 +1,29 @@
 /*******************************************************************************
+* BlueNRG-2 generic linker file for ATOLLIC
+* Main linker variables to control it are:
+*
+* MEMORY_FLASH_APP_SIZE: define the size of the application in case not all the flash is needed.
+* Default value is: 252KB when no OTA firmware upgrade is supported
+*
+* MEMORY_FLASH_APP_OFFSET: define the offset of the application.
+* Default value is: 0 offset
+*
+* MEMORY_RAM_APP_OFFSET: define the offset in RAM from which sections can be
+* allocated.
+* Default value is: 0x02CC
+* 
+* ST_OTA_HIGHER_APPLICATION: When defined application is built for OTA support
+* in the higher part of memory
+*
+* ST_OTA_LOWER_APPLICATION: When defined application is built for OTA support
+* in the lower part of memory
+*
+* ST_USE_OTA_SERVICE_MANAGER_APPLICATION: When defined application is built for
+* OTA firmware upgrade support with separated application for firmware upgrade
+*
+*******************************************************************************/
+
+/*******************************************************************************
 * Memory Definitions
 *******************************************************************************/
 /*
@@ -72,7 +97,7 @@ RESET_MANAGER_SIZE = 0;
 */
    /* This configuration is intended for application supporting OTA firmware upgrade with 2-app scheme (app in the upper part of memory map) */
   /*
-     BlueNRG-2 OTA firmware upgrade support for higher application memory map
+     BlueNRG-2 higher OTA firmware upgrade support higher application memory map
      +-----------------------+ 0x20005FFF
      |  RAM (24K-4)          |
      +-----------------------+ 0x20000004
@@ -109,7 +134,7 @@ MEMORY_FLASH_APP_OFFSET = DEFINED(ST_OTA_HIGHER_APPLICATION) ? (RESET_MANAGER_SI
 */
   /* This configuration is intended for application supporting OTA firmware upgrade with 2-app scheme (app in the lower part of memory map) */
   /*
-     BlueNRG-2 OTA firmware upgrade support for lower application memory map
+     BlueNRG-2 higher OTA firmware upgrade support lower application memory map
      +-----------------------+ 0x20005FFF
      |  RAM (24K-4)          |
      +-----------------------+ 0x20000004
@@ -146,7 +171,7 @@ MEMORY_FLASH_APP_OFFSET = DEFINED(ST_OTA_LOWER_APPLICATION) ? (RESET_MANAGER_SIZ
   /* This configuration is intended for application supporting OTA firmware upgrade with independent OTA firmware upgrade service manager
   (app in the upper part of memory map) */
   /*
-     BlueNRG-2 OTA firmware upgrade support for service manager application memory map
+     BlueNRG-2 higher OTA firmware upgrade support higher application memory map
      +-----------------------+ 0x20005FFF
      |  RAM (24K-4)          |
      +-----------------------+ 0x20000004
@@ -157,10 +182,10 @@ MEMORY_FLASH_APP_OFFSET = DEFINED(ST_OTA_LOWER_APPLICATION) ? (RESET_MANAGER_SIZ
      |  NVM(4K)              |
      +-----------------------+ 0x1007F000
      |                       |
-     |  User app (182K)      |
-     +-----------------------+ 0x10051800
+     |  User app (168K)      |
+     +-----------------------+ 0x10055000
      | OTA Service           |
-     | Manager (70K)         |
+     | Manager (84K)         |
      +-----------------------+ 0x10040000
      |                       |
      +-----------------------| 0x100007FF
@@ -168,7 +193,7 @@ MEMORY_FLASH_APP_OFFSET = DEFINED(ST_OTA_LOWER_APPLICATION) ? (RESET_MANAGER_SIZ
      +-----------------------+ 0x10000000
   */
 
-RESET_SM_MANAGER_SIZE = DEFINED(ST_USE_OTA_SERVICE_MANAGER_APPLICATION) ? 0x11800 : RESET_SM_MANAGER_SIZE ; /* Including OTA firmware upgrade service manager application */
+RESET_SM_MANAGER_SIZE = DEFINED(ST_USE_OTA_SERVICE_MANAGER_APPLICATION) ? 0xF000 : RESET_SM_MANAGER_SIZE ; /* Including OTA firmware upgrade service manager application */
 MEMORY_FLASH_APP_SIZE = DEFINED(ST_USE_OTA_SERVICE_MANAGER_APPLICATION) ? (_MEMORY_FLASH_SIZE_ - RESET_SM_MANAGER_SIZE - FLASH_NVM_DATASIZE) : MEMORY_FLASH_APP_SIZE ;
 MEMORY_FLASH_APP_OFFSET = DEFINED(ST_USE_OTA_SERVICE_MANAGER_APPLICATION) ? (RESET_SM_MANAGER_SIZE) : MEMORY_FLASH_APP_OFFSET ;
 
@@ -186,243 +211,260 @@ ENTRY(RESET_HANDLER)
 _Min_Heap_Size = 0x0;      /* required amount of heap  */
 _Min_Stack_Size = 0xC00; /* required amount of stack */
 
-/* Linker script to configure memory regions. */
+/* Specify the memory areas */
 MEMORY
-{ 
-  FLASH (rx)      : ORIGIN = _MEMORY_FLASH_BEGIN_, LENGTH = _MEMORY_FLASH_SIZE_
-  RAM (xrw)       : ORIGIN = _MEMORY_RAM_BEGIN_, LENGTH = _MEMORY_RAM_SIZE_
-  ROM (rx)        : ORIGIN = _MEMORY_ROM_BEGIN_, LENGTH = _MEMORY_RAM_SIZE_
+{
+  REGION_RAM (xrw)         		: ORIGIN = _MEMORY_RAM_BEGIN_, LENGTH = _MEMORY_RAM_SIZE_
+  REGION_FLASH_BOOTLOADER (rx)  : ORIGIN = _MEMORY_FLASH_BEGIN_, LENGTH = MEMORY_FLASH_APP_OFFSET
+  REGION_FLASH (rx)        		: ORIGIN = _MEMORY_FLASH_BEGIN_ + MEMORY_FLASH_APP_OFFSET, LENGTH = MEMORY_FLASH_APP_SIZE
+  REGION_NVM (rx)          		: ORIGIN = _MEMORY_FLASH_END_ + 1 - FLASH_NVM_DATASIZE, LENGTH = FLASH_NVM_DATASIZE
+  REGION_ROM (rx)          		: ORIGIN = _MEMORY_ROM_BEGIN_, LENGTH = _MEMORY_ROM_SIZE_
 }
 
-
-
-/* Linker script to place sections and symbol values. Should be used together
- * with other linker script that defines memory regions FLASH and RAM.
- * It references following symbols, which must be defined in code:
- *   Reset_Handler : Entry of reset handler
- * 
- * It defines following symbols, which code can use without definition:
- *   __exidx_start
- *   __exidx_end
- *   __etext
- *   __data_start__
- *   __preinit_array_start
- *   __preinit_array_end
- *   __init_array_start
- *   __init_array_end
- *   __fini_array_start
- *   __fini_array_end
- *   __data_end__
- *   __bss_start__
- *   __bss_end__
- *   __end__
- *   end
- *   __HeapLimit
- *   __StackLimit
- *   __StackTop
- *   __stack
- *   _estack
- */
-
-ENTRY(Reset_Handler)
-
-/* Generate a link error if heap and stack don't fit into RAM */
-_Min_Heap_Size = 0x0;      /* required amount of heap  */
-_Min_Stack_Size = 0xC00; /* required amount of stack */
-
+/* Define output sections */
 SECTIONS
-{
-
-	/* The startup code goes first into FLASH */
-	.bootloader (ORIGIN(FLASH)) :
-  	{
-    	. = ALIGN(4);    
-	   /* . = _MEMORY_FLASH_OFFSET_ ; */
-	    KEEP(*(.bootloader)) /* Startup code */
-	    . = ALIGN(4);
-  	}>FLASH
-  	
-  	
-    .text :
-    {
-        KEEP(*(.isr_vector))
-        *(.text*)
-        KEEP(*(.init))
-        KEEP(*(.fini))
-
-        /* .ctors */
-        *crtbegin.o(.ctors)
-        *crtbegin?.o(.ctors)
-        *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
-        *(SORT(.ctors.*))
-        *(.ctors)
-
-        /* .dtors */
-        *crtbegin.o(.dtors)
-        *crtbegin?.o(.dtors)
-        *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
-        *(SORT(.dtors.*))
-        *(.dtors)
-
-        *(.rodata*)
-
-        KEEP(*(.eh_frame*))
-        . = ALIGN(4);
-     	_etext = .;
-    } > FLASH
-
-    .ARM.extab :
-    {
-        *(.ARM.extab* .gnu.linkonce.armextab.*)
-    } > FLASH
-
-    __exidx_start = .;
-    .ARM.exidx :
-    {
-        *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-    } > FLASH
-    __exidx_end = .;
-
-
-    //__etext = .;
-    //_sidata = .;
-    /* used by the startup to initialize data */
-     /* used by the startup to initialize data */
-    _sidata = LOADADDR(.data);
-  	_sidata2 = LOADADDR(.ram_preamble);
+{  
+  /* The startup code goes first into FLASH */
+  .bootloader (ORIGIN(REGION_FLASH_BOOTLOADER)) :
+  {
+    . = ALIGN(4);
     
-    .data : //AT (__etext)
-    {
-        __data_start__ = .;
-        _sdata = .;
-        *(vtable)
-        *(.data*)
-
-        . = ALIGN(4);
-        /* preinit data */
-        PROVIDE_HIDDEN (__preinit_array_start = .);
-        KEEP(*(.preinit_array))
-        PROVIDE_HIDDEN (__preinit_array_end = .);
-
-        . = ALIGN(4);
-        /* init data */
-        PROVIDE_HIDDEN (__init_array_start = .);
-        KEEP(*(SORT(.init_array.*)))
-        KEEP(*(.init_array))
-        PROVIDE_HIDDEN (__init_array_end = .);
-
-
-        . = ALIGN(4);
-        /* finit data */
-        PROVIDE_HIDDEN (__fini_array_start = .);
-        KEEP(*(SORT(.fini_array.*)))
-        KEEP(*(.fini_array))
-        PROVIDE_HIDDEN (__fini_array_end = .);
-
-        KEEP(*(.jcr*))
-        . = ALIGN(4);
-        /* All data end */
-        __data_end__ = .;
-        _edata = .;
-
-    } > RAM AT > FLASH
-
-
-  	
- 
-  	/* RAM preamble */
-  	.ram_preamble /*(NOLOAD)*/ :
-  	{
-	    . = ALIGN(4);
-	    _sdata2 = .;        /* create a global symbol at data start */
-	    /* This is used by the startup in order to initialize the .bss section */
-	    . = 0x04 ; /* There is a waste of RAM here */
-	    KEEP(*(.ota_sw_activation))
-	    . = 0x08 ; /* There is a waste of RAM here */
-	    KEEP(*(.savedMSP))
-	    . = 0x0C ; /* There is a waste of RAM here */
-	    KEEP(*(.wakeupFromSleepFlag))
-	    . = 0x10 ; /* There is a waste of RAM here */
-	    //KEEP(*(.app_base))
-	    . = 0x30 ; /* There is a waste of RAM here */
-	    KEEP(*(.__blueflag_RAM))
-	      _edata2 = .;        /* create a global symbol at data start */
-	    . = 0x34 ; /* There is a waste of RAM here */
-	    KEEP(*(.__crash_RAM))
-	    . = 0xc0 ; /* There is a waste of RAM here */
-  	}  >RAM AT> FLASH
+    KEEP(*(.bootloader)) /* Startup code */
     
+    . = ALIGN(4);
+  } >REGION_FLASH_BOOTLOADER
+
+  /* The startup code goes first into FLASH */
+  ///////////antonio//////////
   
-    .bss :
-    {
-        . = ALIGN(4);
-        __bss_start__ = .;
-        _sbss = .;
-        KEEP(*(.bss.__blue_RAM))
-        *(.bss*)
-        *(COMMON)
-        . = ALIGN(4);
-        __bss_end__ = .;
-        _ebss = .;
-    } > RAM  
+  .isr_vector (ORIGIN(REGION_FLASH)) :
+  {
+    . = ALIGN(4);
     
-/************************************************************************************
+    KEEP(*(.isr_vector)) //Startup code
+    
+    . = ALIGN(4);
+  } >REGION_FLASH
+  
+  ///////////antonio//////////
+
+  /* The program code and other data goes into FLASH */
+  .text :
+  {
+    . = ALIGN(4);
+    KEEP(*(.cmd_call_table))
+    *(.text)           /* .text sections (code) */
+    *(.text*)          /* .text* sections (code) */
+
+    ///////////ANTONIO/////////////    
+    /* .ctors */
+    *crtbegin.o(.ctors)
+    *crtbegin?.o(.ctors)
+    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+    *(SORT(.ctors.*))
+    *(.ctors)
+
+    /* .dtors */
+    *crtbegin.o(.dtors)
+    *crtbegin?.o(.dtors)
+    *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+    *(SORT(.dtors.*))
+    *(.dtors)
+    
+    *(i.*)             /* i.* sections (code) */
+    
+    KEEP(*(.init))
+    KEEP(*(.fini))
+    ///////////ANTONIO/////////////
+    
+    *(.rodata)         /* .rodata sections (constants, strings, etc.) */
+    *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
+    *(.constdata)
+    *(.glue_7)         /* glue arm to thumb code */
+    *(.glue_7t)        /* glue thumb to arm code */
+	
+	KEEP(*(.eh_frame*))   ///////////ANTONIO
+    . = ALIGN(4);
+     _etext = .;
+  } >REGION_FLASH
+
+  /* used by the startup to initialize data */
+  _sidata = LOADADDR(.data);
+  /* used by the startup to initialize data */
+  _sidata2 = LOADADDR(.ram_preamble);
+
+
+  /* RAM preamble no init */
+  .ram_preamble_noinit 0x20000000 (NOLOAD) :
+  {
+    . = ALIGN(4);
+    . = 0x04 ; /* There is a waste of RAM here */
+    KEEP(*(.ota_sw_activation))
+  }  >REGION_RAM
+
+  /* RAM preamble initialized */
+  .ram_preamble 0x20000008 /*(NOLOAD)*/ :
+  {
+    _sdata2 = .;        /* create a global symbol at data start */
+    /* This is used by the startup in order to initialize the .bss section */
+    KEEP(*(.savedMSP))
+    . = 0x04 ;
+    KEEP(*(.wakeupFromSleepFlag))
+    . = 0x08 ;
+    KEEP(*(.app_base))
+    . = 0x28 ; 
+    KEEP(*(.__blueflag_RAM))
+      _edata2 = .;        /* create a global symbol at data end (.__crash_RAM is skipped since it must not be initialized) */
+  }  >REGION_RAM AT> REGION_FLASH
+
+  /* RAM preamble no init */
+  .ram_preamble_noinit2 0x20000034 (NOLOAD) :
+  {
+    KEEP(*(.__crash_RAM))
+  }  >REGION_RAM
+  /* Uninitialized data section */
+   
+  .bss.blueRAM 0x200000C0 :
+  {
+    . = ALIGN(4);
+    _sbssblue = .;         /* define a global symbol at .bss.blueRAM start */
+    KEEP(*(.bss.__blue_RAM))
+    . = ALIGN(4);
+    _ebssblue = .;         /* define a global symbol at .bss.blueRAM end */
+    
+    . = 0x20c + MEMORY_RAM_APP_OFFSET - 0x2cc;
+    
+  } >REGION_RAM  
+  
+  .bss  :
+  {
+    . = ALIGN(4);
+    _sbss = .;         /* define a global symbol at bss start */
+    __bss_start__ = .; /////////////ANTONIO
+    *(.bss.ev_call_table)
+    *(.bss)
+    *(.bss*)
+    *(COMMON)
+    . = ALIGN(4);
+    __bss_end__ = .;    ////////////ANTONIO
+    _ebss = .;         /* define a global symbol at bss end */
+  } >REGION_RAM
+
+  /* Initialized data sections goes into RAM, load LMA copy after code */
+  .data :
+  {
+    __data_start__ = .;
+    _sdata = .;
+    *(vtable)
+    *(.data*)
+
+    . = ALIGN(4);
+    /* preinit data */
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP(*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+
+    . = ALIGN(4);
+    /* init data */
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP(*(SORT(.init_array.*)))
+    KEEP(*(.init_array))
+    PROVIDE_HIDDEN (__init_array_end = .);
+
+    . = ALIGN(4);
+    /* finit data */
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP(*(SORT(.fini_array.*)))
+    KEEP(*(.fini_array))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+
+    KEEP(*(.jcr*))
+    . = ALIGN(4);  
+    /* All data end */
+    __data_end__ = .;
+    _edata = .;
+
+  } >REGION_RAM AT> REGION_FLASH
+  
+  /* Data section that will not be initialized to any value. */
+  .noinit (NOLOAD):
+  {
+    . = ALIGN(4);
+    *(.noinit)
+    . = ALIGN(4);
+  } >REGION_RAM
+
+/**
 * The last 2KB sector of FLASH is reserved for firmware to use. The BLE Host
 * stores its security database in this area. The linker needs to make sure this
 * 2KB sector is left empty.
 */
-  	BLOCK_STACKLIB_FLASH_DATA (_MEMORY_FLASH_END_ - FLASH_NVM_DATASIZE + 1) (NOLOAD) :
-  	{
-	    . = ALIGN(2048);
-	    
-	    KEEP(*(.noinit.stacklib_flash_data))
-	    KEEP(*(.noinit.stacklib_stored_device_id_data))
+  BLOCK_STACKLIB_FLASH_DATA (_MEMORY_FLASH_END_ - FLASH_NVM_DATASIZE + 1) (NOLOAD) :
+  {
+    . = ALIGN(2048);
     
-  	} >FLASH
+    KEEP(*(.noinit.stacklib_flash_data))
+    KEEP(*(.noinit.stacklib_stored_device_id_data))
+    
+  } >REGION_NVM
 
 
-	/* This is to emulate place at end of IAR linker */
-	CSTACK (ORIGIN(RAM) + LENGTH(RAM) - _Min_Stack_Size) (NOLOAD) :
-  	{
-	    . = ALIGN(4);
-	    _estack = . + _Min_Stack_Size;         /* define a global symbol at bss end */
-	    . = ALIGN(4);
-  	} > RAM
+
+  /* This is to emulate place at end of IAR linker */
+  CSTACK (ORIGIN(REGION_RAM) + LENGTH(REGION_RAM) - _Min_Stack_Size) (NOLOAD) :
+  {
+    . = ALIGN(4);
+    _estack = . + _Min_Stack_Size;         /* define a global symbol at bss end */
+    . = ALIGN(4);
+  } > REGION_RAM
+
   
-	.rom_info (NOLOAD) :
-	{
-	    . = ALIGN(4);
-	    KEEP(*(.rom_info)) 
-	    . = ALIGN(4);
-	} >FLASH
-	  
-
-    .heap (COPY):
+  .rom_info (NOLOAD) :
+  {
+    . = ALIGN(4);
+    KEEP(*(.rom_info)) 
+    . = ALIGN(4);
+  } >REGION_ROM
+  
+///////////////ANTONIO/////////////
+  .heap (COPY):
     {
         __end__ = .;
         end = __end__;
         *(.heap*)
         __HeapLimit = .;
-    } > RAM
+    } > REGION_RAM
+///////////////ANTONIO///////////////
 
-    /* .stack_dummy section doesn't contains any symbols. It is only
-     * used for linker to calculate size of stack sections, and assign
-     * values to stack symbols later */
+///////////////ANTONIO///////////////
+	//.stack_dummy section doesn't contains any symbols. It is only
+    //used for linker to calculate size of stack sections, and assign
+    // values to stack symbols later
     .stack_dummy (COPY):
     {
         *(.stack*)
-    } > RAM
+    } > REGION_RAM
 
-    /* Set stack top to end of RAM, and stack limit move down by
-     * size of stack_dummy section */
-    __StackTop = ORIGIN(RAM) + LENGTH(RAM);
+    //Set stack top to end of RAM, and stack limit move down by
+    //size of stack_dummy section
+    __StackTop = ORIGIN(REGION_RAM) + LENGTH(REGION_RAM);
     _estack = __StackTop;
     __StackLimit = __StackTop - SIZEOF(.stack_dummy);
     PROVIDE(__stack = __StackTop);
 
-    /* Check if data + heap + stack exceeds RAM limit */
+    //Check if data + heap + stack exceeds RAM limit
     ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
-    
 
+/*
+  //Remove information from the standard libraries
+  /DISCARD/ :
+  {
+    libc.a ( * )
+    libm.a ( * )
+    libgcc.a ( * )
+  }
+  */
+///////////////ANTONIO///////////////
+    
   	.ARM.attributes 0 : { *(.ARM.attributes) }
 }

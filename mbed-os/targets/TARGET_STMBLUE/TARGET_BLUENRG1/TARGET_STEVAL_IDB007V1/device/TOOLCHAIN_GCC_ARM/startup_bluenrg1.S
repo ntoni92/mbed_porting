@@ -116,8 +116,8 @@ g_pfnVectors:
   .word  Reset_Handler
   .word  NMI_Handler
   .word  HardFault_Handler
-  .word  0xAA5555AA
-  .word  0x424C5545
+  .word  0
+  .word  0
   .word  0
   .word  0
   .word  0

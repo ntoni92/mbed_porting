@@ -21,7 +21,7 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\.\main.o: main.cpp \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/bluenrg_x_device.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis_nvic.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PeripheralNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PinNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/pin_device.h \
@@ -80,7 +80,7 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\.\main.o: main.cpp \
  mbed-os/platform/FileHandle.h mbed-os/platform/DirHandle.h \
  mbed-os/platform/CriticalSectionLock.h mbed-os/platform/DeepSleepLock.h \
  mbed-os/platform/Callback.h mbed-os/platform/FunctionPointer.h \
- imu_includes/colorlib.h Bluetooth_LE/inc/bluenrg1_api.h \
+ Bluetooth_LE/inc/bluenrg1_api.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_it.h \
  Beacon_inc/BlueNRG1_conf.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_flash.h \

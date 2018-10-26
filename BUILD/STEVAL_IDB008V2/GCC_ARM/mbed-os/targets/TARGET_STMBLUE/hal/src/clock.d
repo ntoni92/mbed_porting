@@ -15,6 +15,7 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\mbed-os\targets\TARGET_STMBLUE\hal\src\clock.o: \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_flash.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_gpio.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_dma.h \
+ mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_spi.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_uart.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_sysCtrl.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/misc.h \

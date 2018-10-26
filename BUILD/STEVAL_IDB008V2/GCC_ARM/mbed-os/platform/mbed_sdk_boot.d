@@ -15,5 +15,5 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\mbed-os\platform\mbed_sdk_boot.o: \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/system_bluenrg.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis_nvic.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/BlueNRG_x_device.h

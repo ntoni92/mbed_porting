@@ -1,7 +1,7 @@
 BUILD\STEVAL_IDB008V2\GCC_ARM\.\test_env.o: \
- C:\Users\Antonio\eclipse-workspace\antonio-beacon\mbed-os\features/unsupported\tests\mbed\env\test_env.cpp \
+ D:\Documenti\GitHub\mbed_porting\mbed-os\features/unsupported\tests\mbed\env\test_env.cpp \
  BUILD\STEVAL_IDB008V2\GCC_ARM\mbed_config.h \
- C:\Users\Antonio\eclipse-workspace\antonio-beacon\mbed-os\features/unsupported\tests\mbed\env\test_env.h \
+ D:\Documenti\GitHub\mbed_porting\mbed-os\features/unsupported\tests\mbed\env\test_env.h \
  mbed-os/mbed.h mbed-os/features/filesystem/mbed_filesystem.h \
  mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
@@ -23,7 +23,7 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\.\test_env.o: \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/bluenrg_x_device.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis_nvic.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/cmsis.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PeripheralNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PinNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/pin_device.h \

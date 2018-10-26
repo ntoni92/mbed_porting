@@ -1,5 +1,6 @@
 #include "mbed.h"
-#include "colorlib.h"
+//#include "colorlib.h"
+//#include <wsf_types.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,11 +37,10 @@ extern "C" void SysTick_Handler(void)
 }
 */
 
-
 Serial pc(USBTX, USBRX);
 DigitalOut led1(LED1);
 DigitalOut led2(LED2);
-DigitalOut led3(LED3);
+//DigitalOut led3(LED3);
 DigitalIn but1(PUSH1);
 DigitalIn but2(PUSH2);
 SPI spi(SPI_MOSI, SPI_MISO, SPI_SCK, SPI_CS); // mosi, miso, sclk
@@ -61,30 +61,44 @@ uint8_t rx = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-//#ifdef bluetooth
+#ifdef bluetooth
 static void Start_Beaconing(void);
 void Beacon(void);
 void Device_Init(void);
-//#endif
+#endif
+
+void HardFault_Handler(void)
+{
+  /* Go to infinite loop when Hard Fault exception occurs */
+	led2 = 1;
+	led1=1;
+  while (1)
+  {
+
+  }
+}
 
 /* MAIN ----------------------------------------------------------------------*/
 int main() {
+	DigitalOut led3(LED3);
+	while(1){
+	//pc.printf("CIAO ANTONIO!!!\r\n");
 	int value1 = 10;
 	int value2 = 20;
 	int value3 = 30;
-	led2 = 1;
 	led3 = 1;
 #ifdef BLUENRG2_DEVICE
 	int value4 = 40;
+	pc.printf("BENVENUTO SU BLUENRG2!!!\r\n");
 #endif
-	//pc.printf("ANTONIO!!!\r\n");
-	init();
-//#ifdef bluetooth
+	//init();
+#ifdef bluetooth
     Beacon();
-//#endif
+#endif
+	}
 }
 
-//#ifdef bluetooth
+#ifdef bluetooth
 void Beacon (){
     uint8_t ret;
     	/* BLE stack init */
@@ -122,7 +136,7 @@ void Beacon (){
 #endif /* ST_USE_OTA_SERVICE_MANAGER_APPLICATION */
 	}
 }
-//#endif
+#endif
 
 
 
@@ -144,12 +158,13 @@ void init(){
 
 
 // Interupt Routine to read in data from serial port
+//#ifdef RX_INT
 void Rx_interrupt() {
 	rx = pc.getc();
 }
+//#endif
 
-
-//#ifdef bluetooth
+#ifdef bluetooth
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define BLE_BEACON_VERSION_STRING "1.1.0"
@@ -302,4 +317,4 @@ static void Start_Beaconing(void)
 		printf ("aci_gap_update_adv_data() --> SUCCESS\r\n");
 #endif
 }
-//#endif
+#endif

@@ -3549,6 +3549,6 @@
         "release_versions": ["5"],
         "device_name": "BLUENRG2",
         "device_has": ["SERIAL", "SPI"],
-        "add_macros": ["HS_SPEED_XTAL=HS_SPEED_XTAL_16MHZ","LS_SOURCE=LS_SOURCE_EXTERNAL_32KHZ","SMPS_INDUCTOR=SMPS_INDUCTOR_10uH"]
+        "add_macros": ["HS_SPEED_XTAL=HS_SPEED_XTAL_16MHZ","LS_SOURCE=LS_SOURCE_EXTERNAL_32KHZ","SMPS_INDUCTOR=SMPS_INDUCTOR_10uH","DEVICE_SERIAL=1","DEVICE_SERIAL_ASYNCH=1"]
     }
 }

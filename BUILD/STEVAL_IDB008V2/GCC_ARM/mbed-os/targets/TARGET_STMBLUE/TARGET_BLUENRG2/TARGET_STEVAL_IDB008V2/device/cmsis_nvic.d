@@ -13,5 +13,5 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\mbed-os\targets\TARGET_STMBLUE\TARGET_BLUENRG2\TAR
  mbed-os/targets/TARGET_STMBLUE/hal/inc/compiler.h \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/hal_types.h \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/system_bluenrg.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/BlueNRG_x_device.h

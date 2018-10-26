@@ -14,11 +14,10 @@ BUILD\STEVAL_IDB007V1\GCC_ARM\mbed-os\drivers\InterruptManager.o: \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/system_bluenrg.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG1/TARGET_STEVAL_IDB007V1/device/cmsis_nvic.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG1/TARGET_STEVAL_IDB007V1/device/cmsis.h \
- c:\users\antonio\eclipse-workspace\antonio-beacon\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
+ d:\documenti\github\mbed_porting\mbed-os\targets\target_stmblue\periph_driver\inc\misc.h \
  mbed-os/targets/TARGET_STMBLUE/hal/inc/BlueNRG_x_device.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \
  mbed-os/drivers/InterruptManager.h mbed-os/platform/CallChain.h \
  mbed-os/platform/Callback.h mbed-os/platform/mbed_assert.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/NonCopyable.h \
- mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_debug.h \
  mbed-os/platform/PlatformMutex.h mbed-os/platform/mbed_critical.h

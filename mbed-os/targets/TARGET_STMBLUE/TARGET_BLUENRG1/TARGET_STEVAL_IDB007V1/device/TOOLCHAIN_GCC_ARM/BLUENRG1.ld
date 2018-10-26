@@ -383,7 +383,7 @@ SECTIONS
 	    . = ALIGN(4);
 	} >FLASH
 	  
-	//added antonio
+
     .heap (COPY):
     {
         __end__ = .;

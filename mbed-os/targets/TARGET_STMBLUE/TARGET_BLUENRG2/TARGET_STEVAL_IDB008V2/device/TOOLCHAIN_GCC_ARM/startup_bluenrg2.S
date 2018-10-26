@@ -19,6 +19,10 @@ defined in linker script */
 .word _sdata
 /* end address for the .data section. defined in linker script */
 .word _edata
+/* start address for the .bss section. defined in linker script */
+.word _sbss
+/* end address for the .bss section. defined in linker script */
+.word _ebss
 
 /**
  * This is the code that gets called when the processor first
@@ -34,27 +38,7 @@ Reset_Handler:
 /* set stack pointer */
   ldr   r0, =_estack
   mov   sp, r0
-
-
-/* Copy the data segment initializers from flash to SRAM
-  movs r1, #0
-  b LoopCopyDataInit
   
-CopyDataInit:
-  ldr r3, =_sidata
-  ldr r3, [r3, r1]
-  str r3, [r0, r1]
-  adds r1, r1, #4
-  
-LoopCopyDataInit:
-  ldr r0, =_sdata
-  ldr r3, =_edata
-  adds r2, r0, r1     //r2=r0 & condition code flags are updated
-  cmp r2, r3
-  bcc CopyDataInit    //branch if Carry=0 : b if r2<r3
-*/
-
-
 /* Copy the data segment initializers from flash to SRAM */
   ldr r0, =_sdata
   ldr r1, =_edata
@@ -72,11 +56,24 @@ LoopCopyDataInit:
   cmp r4, r1          //branch if Carry=0 : b if r4<r1
   bcc CopyDataInit
 
+/* Zero fill the bss segment. */
+  ldr r2, =_sbss
+  ldr r4, =_ebss
+  movs r3, #0
+  b LoopFillZerobss
+
+FillZerobss:
+  str  r3, [r2]
+  adds r2, r2, #4
+
+LoopFillZerobss:
+  cmp r2, r4
+  bcc FillZerobss
 
 /* Call the clock system intitialization function */
     bl  SystemInit
 
-/* Call the application s entry point */
+/* Call the application's entry point */
     bl _start
 
 
@@ -116,8 +113,8 @@ g_pfnVectors:
   .word  Reset_Handler
   .word  NMI_Handler
   .word  HardFault_Handler
-  .word  0xAA5555AA
-  .word  0x424C5545
+  .word  0
+  .word  0
   .word  0
   .word  0
   .word  0
