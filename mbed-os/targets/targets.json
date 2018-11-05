@@ -3549,7 +3549,7 @@
         "release_versions": ["5"],
         "device_name": "BLUENRG2",
         "device_has": ["SERIAL", "SPI", "USTICKER"],
-        "add_macros": ["LS_SOURCE=LS_SOURCE_EXTERNAL_32KHZ","SMPS_INDUCTOR=SMPS_INDUCTOR_10uH","DEVICE_SERIAL=1","DEVICE_SERIAL_ASYNCH=1","CMSIS_NVIC_VIRTUAL","CMSIS_VECTAB_VIRTUAL"],
+        "add_macros": ["LS_SOURCE=LS_SOURCE_EXTERNAL_32KHZ","SMPS_INDUCTOR=SMPS_INDUCTOR_10uH","DEVICE_SERIAL=1","DEVICE_SERIAL_ASYNCH=1"],
         "config": {
             "clock_source": {
                 "help": "Crystal oscillator frequency",
