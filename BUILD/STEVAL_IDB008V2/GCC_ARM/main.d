@@ -79,17 +79,4 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\.\main.o: main.cpp \
  mbed-os/platform/ATCmdParser.h mbed-os/platform/FileSystemHandle.h \
  mbed-os/platform/FileHandle.h mbed-os/platform/DirHandle.h \
  mbed-os/platform/CriticalSectionLock.h mbed-os/platform/DeepSleepLock.h \
- mbed-os/platform/Callback.h mbed-os/platform/FunctionPointer.h \
- Bluetooth_LE/inc/bluenrg1_api.h \
- mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_it.h \
- Beacon_inc/BlueNRG1_conf.h \
- mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_flash.h \
- mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_dma.h \
- mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/misc.h \
- Bluetooth_LE/inc/ble_const.h Bluetooth_LE/inc/hci_const.h \
- Bluetooth_LE/inc/ble_status.h Bluetooth_LE/inc/bluenrg1_hal.h \
- Bluetooth_LE/inc/bluenrg1_gap.h Bluetooth_LE/inc/link_layer.h \
- Bluetooth_LE/inc/ble_status.h Bluetooth_LE/inc/bluenrg1_gatt_server.h \
- Bluetooth_LE/inc/link_layer.h Bluetooth_LE/inc/sm.h \
- Bluetooth_LE/inc/bluenrg1_stack.h Bluetooth_LE/inc/bluenrg1_events.h \
- Beacon_inc/Beacon_config.h
+ mbed-os/platform/Callback.h mbed-os/platform/FunctionPointer.h

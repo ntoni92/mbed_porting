@@ -12,5 +12,3 @@
 uint32_t getGpioPin(PinName pin){
 	return (uint32_t)(1 << ((uint32_t)pin & 0xF)); // Return the pin mask
 }
-
-

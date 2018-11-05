@@ -28,6 +28,4 @@ BUILD\STEVAL_IDB008V2\GCC_ARM\mbed-os\targets\TARGET_STMBLUE\us_ticker_api.o: \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_sysCtrl.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PinNames.h \
  mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/PeripheralNames.h \
- mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/TARGET_STEVAL_IDB008V2/device/hal_tick.h \
- mbed-os/targets/TARGET_STMBLUE/TARGET_BLUENRG2/us_ticker_device.h \
  mbed-os/targets/TARGET_STMBLUE/Periph_Driver/inc/BlueNRG1_mft.h

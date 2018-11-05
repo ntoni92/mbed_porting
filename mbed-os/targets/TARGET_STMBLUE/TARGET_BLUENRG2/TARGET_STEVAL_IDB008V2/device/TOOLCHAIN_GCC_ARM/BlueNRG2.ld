@@ -204,7 +204,7 @@ ev_call_table = 0x200002cc;
 
 
 /* Entry Point */
-ENTRY(RESET_HANDLER)
+ENTRY(RESET_HANDLER2)
 
 
 /* Generate a link error if heap and stack don't fit into RAM */
@@ -237,11 +237,11 @@ SECTIONS
   /* The startup code goes first into FLASH */
   ///////////antonio//////////
   
-  .isr_vector (ORIGIN(REGION_FLASH)) :
+  .intvec (ORIGIN(REGION_FLASH)) :
   {
     . = ALIGN(4);
     
-    KEEP(*(.isr_vector)) //Startup code
+    KEEP(*(.intvec)) //Startup code
     
     . = ALIGN(4);
   } >REGION_FLASH

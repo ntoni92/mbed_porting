@@ -1,8 +1,8 @@
 /*
  * pin_device.h
  *
- *  Created on: 29 nov 2017
- *      Author: Antonio
+ *  Created on: 30 ott 2018
+ *      Author: Antonio O.
  */
 
 #ifndef MBED_OS_TARGETS_TARGET_STMBLUE_PIN_DEVICE_H_
@@ -13,12 +13,6 @@
 #include "BlueNRG1_sysCtrl.h"
 #include "PinNames.h"
 
-
-#define LED_ON                          Bit_SET
-#define LED_OFF                         Bit_RESET
-
-
 uint32_t getGpioPin(PinName);
-
 
 #endif /* MBED_OS_TARGETS_TARGET_STMBLUE_PIN_DEVICE_H_ */

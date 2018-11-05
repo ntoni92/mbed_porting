@@ -62,16 +62,13 @@ void NMI_Handler(void)
 /**
   * @brief  This function handles Hard Fault exception.
   */
-/*
 void HardFault_Handler(void)
 {
-   //Go to infinite loop when Hard Fault exception occurs
+  /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
-  {
-
-  }
+  {}
 }
-*/
+
 /**
   * @brief  This function handles SVCall exception.
   */
@@ -94,10 +91,6 @@ void SysTick_Handler(void)
   SysCount_Handler(); 
 }
 
-//void Default_Handler(){
-
-//}
-
 void GPIO_Handler(void)
 {
 }
@@ -112,11 +105,10 @@ void GPIO_Handler(void)
 * @param  None
 * @retval None
 */
-/*
 void UART_Handler(void)
 {  
 }
-*///antonio
+
 void Blue_Handler(void)
 {
    // Call RAL_Isr

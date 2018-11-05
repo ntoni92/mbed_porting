@@ -308,8 +308,9 @@ extern unsigned long _edata2;		/* end address the special ram_preamble defined i
 
 extern int main(void);
 
-void RESET_HANDLER(void)
+void RESET_HANDLER2(void)
 {
+	//while(1){;};
   if(__low_level_init()==1)	{
     unsigned long *pulSrc, *pulDest;
     
@@ -339,7 +340,9 @@ void RESET_HANDLER(void)
   }
   // Call the application's entry point.
   __set_MSP((uint32_t)_INITIAL_SP);
-  main();
+  SystemInit();  //antonio
+  _start(); //antonio
+  main();  //qui il codice non arriva
 }
 
 #endif /* __GNUC__ */
@@ -349,7 +352,7 @@ void RESET_HANDLER(void)
 SECTION(".intvec")
 REQUIRED(const intvec_elem __vector_table[]) = {
     {.__ptr = _INITIAL_SP},                   /* Stack address                      */
-    {RESET_HANDLER},           		            /* Reset handler is C initialization. */
+    {RESET_HANDLER2},           		            /* Reset handler is C initialization. */
     {NMI_Handler},                            /* The NMI handler                    */
     {HardFault_Handler},                      /* The hard fault handler             */
     {(intfunc) OTA_VALID_APP_TAG},            /* OTA Application                    */

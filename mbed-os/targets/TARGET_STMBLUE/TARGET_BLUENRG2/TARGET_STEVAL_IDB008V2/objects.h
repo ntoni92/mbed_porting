@@ -20,7 +20,7 @@ extern "C" {
 struct serial_s{
     UARTName uart;
     uint32_t index_irq; // Used by irq
-    UART_InitType *init;  //bluenrg struct
+    UART_InitType init;  //bluenrg struct
     PinName pin_tx;
     PinName pin_rx;
 };
