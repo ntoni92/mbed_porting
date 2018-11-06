@@ -11,6 +11,8 @@
 #include "pin_device.h"
 #include "objects.h"
 
+//#include "misc.h"
+
 
 int stdio_uart_inited = 0;// used in platform/mbed_board.c and platform/mbed_retarget.cpp
 serial_t stdio_uart;

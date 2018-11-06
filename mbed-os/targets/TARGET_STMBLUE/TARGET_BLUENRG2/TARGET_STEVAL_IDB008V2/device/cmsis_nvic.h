@@ -1,5 +1,8 @@
 /* mbed Microcontroller Library
  * CMSIS-style functionality to support dynamic vectors
+ *
+ * Author: Antonio O. 06/11/2018
+ *
  *******************************************************************************
  *******************************************************************************
  */ 
@@ -11,7 +14,7 @@
 // MCU Peripherals: 32 vectors = 128 bytes from 0x40 to 0xBF
 // Total: 48 vectors = 192 bytes (0xC0) to be reserved in RAM
 #define NVIC_NUM_VECTORS      48
-#define NVIC_USER_IRQ_OFFSET  16
+//#define NVIC_USER_IRQ_OFFSET  16
 
 #include "cmsis.h"
 
@@ -22,13 +25,21 @@ extern "C" {
 #define NVIC_RAM_VECTOR_ADDRESS		_MEMORY_RAM_BEGIN_		// Vectors positioned at start of RAM
 #define NVIC_FLASH_VECTOR_ADDRESS	_MEMORY_FLASH_BEGIN_	// Initial vector position in flash
 
-//void NVIC_SetVector(IRQn_Type IRQn, uint32_t vector);
-//uint32_t NVIC_GetVector(IRQn_Type IRQn);
+#ifndef FLASH_REMAP_RAM
+#define FLASH_REMAP_RAM 0x0002U
+#endif //flash_remap_ram
 
-#include "../../../Periph_Driver/inc/misc.h"
+#ifndef FLASH_PREMAP_MAIN
+#define FLASH_PREMAP_MAIN 0x0008U
+#endif //flash_premap_main
+
+void NVIC_SetVector(IRQn_Type IRQn, uint32_t vector);
+uint32_t NVIC_GetVector(IRQn_Type IRQn);
+
+//#include "../../../Periph_Driver/inc/misc.h"
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+#endif //MBED_CMSIS_NVIC_H

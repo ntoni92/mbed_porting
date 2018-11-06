@@ -3,10 +3,10 @@
  */
 //#include "stddef.h"
 #include "us_ticker_api.h"
-#include "PeripheralNames.h"
+//#include "PeripheralNames.h"
 #include "BlueNRG1_mft.h"
 
-//#include "us_ticker_device.h"
+#include "us_ticker_device.h"
 
 #define FREQ_TICK 1000000
 
@@ -35,7 +35,8 @@ void us_ticker_init(void){
 	MFT_InitType timer_init;
 	NVIC_InitType NVIC_InitStructure;
 	tick_count = 0;
-/*
+
+	//sistemare
 	uint32_t vector = (uint32_t)&MFT2B_Handler;
 	uint32_t vector_prova = (uint32_t)&prova_Handler;
 	//Set MFT2B interrupt handler
@@ -45,7 +46,8 @@ void us_ticker_init(void){
 	uint32_t verifica = NVIC_GetVector(MFT2B_IRQn);
 	NVIC_EnableIRQ(MFT2B_IRQn);
 	enabled = NVIC_GetEnableIRQ(MFT2B_IRQn);
-*/
+	//sistemare fine
+
 	SysCtrl_PeripheralClockCmd(CLOCK_PERIPH_MTFX2, ENABLE); //timer 2 is used as timebase, maybe mtfx1 is useless in this context
 	MFT_StructInit(&timer_init);
 
@@ -57,14 +59,10 @@ void us_ticker_init(void){
 	timer_init.MFT_CRA = 0x0000;
 	timer_init.MFT_CRB = 0xFFFF;
 
-	//NVIC_EnableIRQ(MFT2B_IRQn);
-
 	MFT_Init(MFT2, &timer_init);
 
 	//Set counter for timer2
 	MFT_SetCounter2(MFT2, 0xFFFF);
-
-
 
 	//Enable MFT2B Interrupt
 	NVIC_InitStructure.NVIC_IRQChannel = MFT2B_IRQn;

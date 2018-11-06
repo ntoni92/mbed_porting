@@ -111,6 +111,7 @@
 #include "BlueNRG_x_device.h"
 #include "miscutil.h"
 #include "hal_types.h"
+#include "cmsis_nvic.h" //antonio
 
 #define RESET_WAKE_DEEPSLEEP_REASONS 0x05
 #define CRITICAL_PRIORITY 0
@@ -912,6 +913,8 @@ void SystemInit(void)
   NVIC_SetPriority(RTC_IRQn,       LOW_PRIORITY);
   NVIC_SetPriority(PKA_IRQn,       LOW_PRIORITY);
   NVIC_SetPriority(DMA_IRQn,       LOW_PRIORITY);
+
+  NVIC_SetVector(0,0);  //antonio
 
   /* Device Configuration */
   DeviceConfiguration(TRUE, TRUE);

@@ -33,6 +33,7 @@
 #define MBED_CMSIS_H
 
 #include "bluenrg_x_device.h"
+//#include "BlueNRG1_flash.h"
 #include "cmsis_nvic.h"
 
 #endif
