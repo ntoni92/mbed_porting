@@ -42,7 +42,7 @@ void us_ticker_init(void){
 	//Set MFT2B interrupt handler
 	NVIC_DisableIRQ(MFT2B_IRQn);
 	uint32_t enabled = NVIC_GetEnableIRQ(MFT2B_IRQn);
-	NVIC_SetVector(MFT2B_IRQn, vector);
+	NVIC_SetVector(MFT2B_IRQn, vector_prova);
 	uint32_t verifica = NVIC_GetVector(MFT2B_IRQn);
 	NVIC_EnableIRQ(MFT2B_IRQn);
 	enabled = NVIC_GetEnableIRQ(MFT2B_IRQn);
@@ -77,36 +77,6 @@ void us_ticker_init(void){
 	MFT_Cmd(MFT2, ENABLE);
 
 	status = init;
-/*
-	NVIC_InitType NVIC_InitStructure;
-	MFT_InitType timer_init;
-
-	carry = 0;
-
-	SysCtrl_PeripheralClockCmd(CLOCK_PERIPH_MTFX1 | CLOCK_PERIPH_MTFX2, ENABLE);
-	MFT_StructInit(&timer_init);
-
-	timer_init.MFT_Mode = MFT_MODE_3;
-	timer_init.MFT_Prescaler = 15;
-
-	//MFT1 configuration
-	timer_init.MFT_Clock1 = MFT_NO_CLK;
-	timer_init.MFT_Clock2 = MFT_PRESCALED_CLK;
-	timer_init.MFT_CRB = 0xFFFF;
-	MFT_Init(MFT1, &timer_init);
-
-	//Set counter for timer2
-	MFT_SetCounter2(MFT1, 0xFFFF);
-
-	Enable MFT1B Interrupt
-	NVIC_InitStructure.NVIC_IRQChannel = MFT1B_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = HIGH_PRIORITY;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	Enable the MFT1 interrupt
-	MFT_EnableIT(MFT1, MFT_IT_TND, ENABLE);
-*/
 }
 
 
