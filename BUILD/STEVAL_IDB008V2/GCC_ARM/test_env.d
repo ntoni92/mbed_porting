@@ -1,7 +1,7 @@
 BUILD\STEVAL_IDB008V2\GCC_ARM\.\test_env.o: \
- D:\Documenti\GitHub\mbed_porting\mbed-os\features/unsupported\tests\mbed\env\test_env.cpp \
+ D:\Documenti\GitHub\mbed_porting_NO_RTOS\mbed-os\features/unsupported\tests\mbed\env\test_env.cpp \
  BUILD\STEVAL_IDB008V2\GCC_ARM\mbed_config.h \
- D:\Documenti\GitHub\mbed_porting\mbed-os\features/unsupported\tests\mbed\env\test_env.h \
+ D:\Documenti\GitHub\mbed_porting_NO_RTOS\mbed-os\features/unsupported\tests\mbed\env\test_env.h \
  mbed-os/mbed.h mbed-os/features/filesystem/mbed_filesystem.h \
  mbed-os/platform/platform.h mbed-os/platform/mbed_retarget.h \
  mbed-os/platform/mbed_toolchain.h mbed-os/platform/mbed_preprocessor.h \

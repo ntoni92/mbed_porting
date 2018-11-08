@@ -27,26 +27,12 @@ void MFT2B_Handler(void){
 	}
 }
 
-void prova_Handler(void){
-	while(1){;}
-}
-
 void us_ticker_init(void){
 	MFT_InitType timer_init;
 	NVIC_InitType NVIC_InitStructure;
 	tick_count = 0;
 
-	//sistemare
-	uint32_t vector = (uint32_t)&MFT2B_Handler;
-	uint32_t vector_prova = (uint32_t)&prova_Handler;
-	//Set MFT2B interrupt handler
-	NVIC_DisableIRQ(MFT2B_IRQn);
-	uint32_t enabled = NVIC_GetEnableIRQ(MFT2B_IRQn);
-	NVIC_SetVector(MFT2B_IRQn, vector_prova);
-	uint32_t verifica = NVIC_GetVector(MFT2B_IRQn);
-	NVIC_EnableIRQ(MFT2B_IRQn);
-	enabled = NVIC_GetEnableIRQ(MFT2B_IRQn);
-	//sistemare fine
+	NVIC_SetVector(MFT2B_IRQn, &MFT2B_Handler);
 
 	SysCtrl_PeripheralClockCmd(CLOCK_PERIPH_MTFX2, ENABLE); //timer 2 is used as timebase, maybe mtfx1 is useless in this context
 	MFT_StructInit(&timer_init);

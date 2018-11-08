@@ -8,7 +8,7 @@ Serial pc(USBTX,USBRX);
 int main() {
     while (true) {
         led1 = !led1;
-        wait(1);
+        wait(0.5);
         pc.printf("Ciao Antonio\n");
     }
 }
